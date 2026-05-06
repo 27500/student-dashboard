@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Configuration de base pour le dashboard */
+:root {
+  --bg-main: #f0f9fa; /* Fond Aqua très clair */
+  --accent-aqua: #00ced1; /* Couleur Aqua principale */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  min-height: 100vh;
+}
+
+/* On enlève les restrictions de largeur pour que le dashboard prenne tout l'écran */
+#root {
+  width: 100%;
+  margin: 0;
+  text-align: left; /* Très important : on aligne à gauche */
+  display: block; 
+}
+
+/* Optionnel : Une transition douce pour les boutons */
+button, a {
+  transition: all 0.2s ease-in-out;
+}
