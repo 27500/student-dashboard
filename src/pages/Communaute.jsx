@@ -3,8 +3,8 @@ import { MessageSquare, Users, Heart, Share2 } from 'lucide-react';
 
 const Communaute = () => {
   const posts = [
-    { id: 1, user: "Jean Mukendi", role: "Étudiant FST", content: "Quelqu'un aurait les notes du cours de thermodynamique de lundi dernier ? Merci d'avance !", likes: 12, comments: 4 },
-    { id: 2, user: "Sarah K.", role: "Membre UESCOM", content: "N'oubliez pas la réunion d'accueil pour les nouveaux arrivants ce samedi à 15h !", likes: 45, comments: 8 }
+    { id: 1, user: "blessing mingenge", role: "Étudiant FST", content: "Quelqu'un aurait les notes du cours de thermodynamique de lundi dernier ? Merci d'avance !", likes: 12, comments: 4 },
+    { id: 2, user: "jonathan ", role: "président uescom", content: "N'oubliez pas la réunion d'accueil pour les nouveaux arrivants ce samedi à 15h !", likes: 45, comments: 8 }
   ];
 
   return (
