@@ -1,34 +1,93 @@
-import React from 'react';
-import { Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Mail, Lock, LogIn, ShieldCheck } from 'lucide-react';
 
 const Login = ({ onLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulation de connexion
+    if (email && password) {
+      onLogin();
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-white rounded-[32px] shadow-2xl p-10 border border-slate-100">
-        <div className="flex flex-col items-center mb-10">
-          <div className="w-16 h-16 bg-[#0e223f] rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-            <Globe size={32} className="text-blue-300" />
+    <div className="min-h-screen bg-[#0e223f] flex items-center justify-center p-6 font-sans">
+      {/* CARD PRINCIPALE */}
+      <div className="w-full max-w-md bg-white rounded-[40px] p-10 shadow-2xl relative overflow-hidden">
+        
+        {/* ÉLÉMENT DÉCORATIF */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
+        
+        {/* HEADER DU LOGIN */}
+        <div className="mb-10 text-center">
+          <div className="w-16 h-16 bg-[#0e223f] rounded-2xl flex items-center justify-center text-white mx-auto mb-4 shadow-lg -rotate-3 transition-transform hover:rotate-0 cursor-pointer">
+            <LogIn size={28}/>
           </div>
-          <h1 className="text-2xl font-black text-[#0e223f] tracking-tight">UESCOM-APP</h1>
-          <p className="text-slate-400 text-sm font-medium">Connectez-vous à votre espace</p>
+          <h2 className="text-3xl font-black text-[#0e223f] italic tracking-tighter uppercase leading-none">
+            Espace <br/> Administratif
+          </h2>
+          <p className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-3">UESCOM Management System</p>
         </div>
 
-        <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
-          <div>
-            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">Email</label>
-            <input type="email" placeholder="votre@email.com" className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:border-[#0e223f] transition-all" />
+        {/* FORMULAIRE */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="relative group">
+            <div className="absolute left-5 top-5 text-slate-300 group-focus-within:text-[#0e223f] transition-colors">
+              <Mail size={20}/>
+            </div>
+            <input 
+              required
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email institutionnel" 
+              className="w-full pl-14 p-5 bg-slate-50 rounded-2xl border-none text-sm font-bold placeholder:text-slate-300 focus:ring-2 focus:ring-[#0e223f] transition-all outline-none"
+            />
           </div>
-          <div>
-            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">Mot de passe</label>
-            <input type="password" placeholder="••••••••" className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:border-[#0e223f] transition-all" />
+
+          <div className="relative group">
+            <div className="absolute left-5 top-5 text-slate-300 group-focus-within:text-[#0e223f] transition-colors">
+              <Lock size={20}/>
+            </div>
+            <input 
+              required
+              type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Mot de passe" 
+              className="w-full pl-14 p-5 bg-slate-50 rounded-2xl border-none text-sm font-bold placeholder:text-slate-300 focus:ring-2 focus:ring-[#0e223f] transition-all outline-none"
+            />
           </div>
-          <button type="submit" className="w-full py-4 bg-[#0e223f] text-white rounded-2xl font-bold shadow-xl hover:bg-[#1a3a63] transition-all transform hover:-translate-y-1">
-            Se connecter
+
+          <div className="flex justify-end px-2">
+            <button type="button" className="text-[10px] font-black text-slate-400 uppercase hover:text-[#0e223f] transition-colors">
+              Mot de passe oublié ?
+            </button>
+          </div>
+
+          <button 
+            type="submit" 
+            className="w-full bg-[#0e223f] text-white p-5 rounded-2xl font-black uppercase italic tracking-widest text-xs shadow-xl hover:scale-[1.02] transition-transform active:scale-95 mt-4 flex items-center justify-center gap-2"
+          >
+            <ShieldCheck size={16}/> Se connecter
           </button>
         </form>
 
-        <div className="mt-8 text-center">
-          <p className="text-sm text-slate-400">Pas encore de compte ? <span className="text-[#0e223f] font-bold cursor-pointer">S'inscrire</span></p>
+        {/* LIEN VERS INSCRIPTION */}
+        <div className="mt-10 pt-6 border-t border-slate-50 text-center">
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">
+            Vous n'avez pas encore de compte ? 
+            <Link 
+              to="/inscription" 
+              className="text-[#0e223f] underline ml-2 hover:text-orange-500 transition-colors font-black"
+            >
+              Inscrivez-vous ici
+            </Link>
+          </p>
         </div>
       </div>
     </div>

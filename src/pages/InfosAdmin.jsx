@@ -10,10 +10,6 @@ const InfosAdmin = () => {
   return (
     <div className="space-y-6">
       <div className="bg-blue-50 border-l-4 border-[#0e223f] p-4 rounded-r-xl">
-        <div className="flex items-center gap-3">
-          <AlertCircle className="text-[#0e223f]" size={20} />
-          <p className="text-sm font-bold text-[#0e223f]">Rappel : Les bureaux sont fermés le vendredi après-midi.</p>
-        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
