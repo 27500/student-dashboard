@@ -1,25 +1,23 @@
 import React from 'react';
-import { 
-  Users, CreditCard, Briefcase, GraduationCap, 
-  Globe
-} from 'lucide-react';
+import { Users, CreditCard, Briefcase, GraduationCap, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Accueil = () => {
   return (
     <div className="space-y-8 pb-10">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-         <StatCard title="Membres" value="128" color="text-blue-600" />
-         <StatCard title="Demandes" value="12" color="text-orange-500" />
-         <StatCard title="Offres Stage" value="08" color="text-green-600" />
+      {/* SECTION CARTES STATS - COULEURS UNIFIÉES */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+         <StatCard title="Membres Enregistrés" value="128" subtitle="Utilisateurs actifs" />
+         <StatCard title="Demandes de Cartes" value="12" subtitle="En attente de revue" />
+         <StatCard title="Offres de Stages" value="08" subtitle="Opportunités publiées" />
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-black text-[#0e223f] uppercase text-[10px] tracking-[0.3em] flex items-center gap-2">
-          Accès Rapide Administration <span className="h-[1px] bg-slate-100 flex-1"></span>
+        <h3 className="font-bold text-[#0e223f] uppercase text-xs tracking-wider flex items-center gap-2">
+          Accès Rapide Administration <span className="h-[1px] bg-slate-200 flex-1"></span>
         </h3>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <QuickLink to="/utilisateurs" icon={<Users/>} label="Utilisateurs" />
           <QuickLink to="/demandes-cartes" icon={<CreditCard/>} label="Cartes Membres" />
           <QuickLink to="/stages" icon={<Briefcase/>} label="Gestion Stages" />
@@ -31,19 +29,20 @@ const Accueil = () => {
   );
 };
 
-const StatCard = ({ title, value, color }) => (
-  <div className="bg-white p-6 rounded-[28px] border border-slate-50 shadow-sm">
-    <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest mb-1">{title}</p>
-    <p className={`text-3xl font-black italic tracking-tighter ${color}`}>{value}</p>
+const StatCard = ({ title, value, subtitle }) => (
+  <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-1">
+    <p className="text-xs font-semibold uppercase text-slate-400 tracking-wider">{title}</p>
+    <p className="text-3xl font-bold tracking-tight text-[#0e223f]">{value}</p>
+    <p className="text-xs text-slate-400 font-medium">{subtitle}</p>
   </div>
 );
 
 const QuickLink = ({ to, icon, label }) => (
-  <Link to={to} className="bg-white p-6 rounded-[30px] border border-slate-50 shadow-sm flex flex-col items-center gap-4 hover:bg-[#0e223f] transition-all group hover:-translate-y-2">
-    <div className="text-[#0e223f] group-hover:text-white transition-colors p-3 bg-slate-50 group-hover:bg-white/10 rounded-2xl">
+  <Link to={to} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-4 hover:bg-[#0e223f] transition-all group hover:-translate-y-1">
+    <div className="text-[#0e223f] group-hover:text-white transition-colors p-3 bg-slate-50 group-hover:bg-white/10 rounded-xl">
       {icon}
     </div>
-    <span className="text-[10px] font-black uppercase tracking-tighter text-[#0e223f] group-hover:text-white text-center italic">{label}</span>
+    <span className="text-xs font-semibold uppercase tracking-tight text-[#0e223f] group-hover:text-white text-center">{label}</span>
   </Link>
 );
 
